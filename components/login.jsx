@@ -1,7 +1,8 @@
 "use client"
 
+import { useRouter } from "next/navigation"
+import { useState, useEffect } from "react"
 import Button from "react-bootstrap/Button"
-import { useState } from "react"
 import { FaRegLightbulb } from "react-icons/fa"
 
 function LogIn() {
@@ -12,13 +13,20 @@ function LogIn() {
   const [email, setEmail] = useState("")
   const [gender, setGender] = useState("male")
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [light, setLight] = useState(true)
+
+  const router = useRouter()
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      router.push("/")
+    }
+  }, [isLoggedIn, router])
 
   const handleLogin = () => {
     if (
-      email === "chuluudai.lkh@gmail.com" &&
-      firstname === "rock" &&
-      lastname === "chuluudai" &&
+      email === "yes" &&
+      firstname === "no" &&
+      lastname === "hi" &&
       password === "1234"
     ) {
       if (gender === "male") {
@@ -31,79 +39,93 @@ function LogIn() {
       setError("Invalid username or password")
     }
   }
+
   return (
-    <div className='max-w-md mt-100 border border-gray-300 rounded-xl shadow-lg p-6 bg-white'>
-      {isLoggedIn ? (
-        <p className='text-green-600'>You have successfully logged in.</p>
-      ) : (
-        <div>
-          <h3 className='mb-4'>Log In Page</h3>
-          <button className='bottom-1 left-1'>
-            <FaRegLightbulb />
-          </button>
-          <input
-            className='w-full border border-gray-300 rounded-lg p-2 mb-3'
-            type='text'
-            placeholder='First name'
-            value={firstname}
-            onChange={(e) => setFirstname(e.target.value)}
-          />
-          <input
-            className='w-full border border-gray-300 rounded-lg p-2 mb-3'
-            type='text'
-            placeholder='Last name'
-            value={lastname}
-            onChange={(e) => setLastname(e.target.value)}
-          />
-          <input
-            className='w-full border border-gray-300 rounded-lg p-2 mb-3'
-            type='text'
-            placeholder='Email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            className='w-full border border-gray-300 rounded-lg p-2 mb-3'
-            type='password'
-            placeholder='Password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <div className='flex items-center gap-6 mb-3'>
-            <label className='flex items-center gap-1 text-gray-700'>
-              <input
-                type='radio'
-                value='male'
-                checked={gender === "male"}
-                onChange={(e) => setGender(e.target.value)}
-              />
-              Male
-            </label>
-
-            <label className='flex items-center gap-1 text-gray-700'>
-              <input
-                type='radio'
-                value='female'
-                checked={gender === "female"}
-                onChange={(e) => setGender(e.target.value)}
-              />
-              Female
-            </label>
+    <div className='min-h-screen flex items-center justify-center p-0 m-0'>
+      <div className='w-full max-w-md bg-white rounded-xl shadow-2xl p-8'>
+        {isLoggedIn ? (
+          <div className='text-center'>
+            <p className='text-green-600 text-lg font-semibold'>
+              You have successfully logged in.
+            </p>
           </div>
+        ) : (
+          <>
+            <h2 className='text-center text-black'>Log In</h2>
 
-          {!isLoggedIn && error && (
-            <p className='text-red-500 text-sm mb-3'>{error}</p>
-          )}
-        </div>
-      )}
-      <Button
-        variant='primary'
-        onClick={handleLogin}
-        className='w-full mt-2 rounded-lg'
-      >
-        Log In
-      </Button>
+            <button
+            className="right-1 top-1">
+              <FaRegLightbulb className='text-yellow-400 text-3xl' />
+            </button>
+
+            <input
+              className='w-full border border-gray-300 rounded-lg p-3 mb-4 focus:outline-none text-black focus:ring-2 focus:ring-blue-400'
+              type='text'
+              placeholder='First Name'
+              value={firstname}
+              onChange={(e) => setFirstname(e.target.value)}
+            />
+            <input
+              className='w-full border border-gray-300 rounded-lg p-3 mb-4 focus:outline-none text-black focus:ring-2 focus:ring-blue-400'
+              type='text'
+              placeholder='Last Name'
+              value={lastname}
+              onChange={(e) => setLastname(e.target.value)}
+            />
+            <input
+              className='w-full border border-gray-300 rounded-lg p-3 mb-4 focus:outline-none text-black focus:ring-2 focus:ring-blue-400'
+              type='text'
+              placeholder='Email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              className='w-full border border-gray-300 rounded-lg p-3 mb-4 focus:outline-none text-black focus:ring-2 focus:ring-blue-400'
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <div className='flex items-center gap-6 mb-4'>
+              <label className='flex items-center gap-1 text-gray-700'>
+                <input
+                  type='radio'
+                  value='male'
+                  checked={gender === "male"}
+                  onChange={(e) => setGender(e.target.value)}
+                  className='accent-blue-500'
+                />
+                Male
+              </label>
+
+              <label className='flex items-center gap-1 text-gray-700'>
+                <input
+                  type='radio'
+                  value='female'
+                  checked={gender === "female"}
+                  onChange={(e) => setGender(e.target.value)}
+                  className='accent-pink-500'
+                />
+                Female
+              </label>
+            </div>
+
+            {error && (
+              <p className='text-red-500 text-sm mb-4 text-center'>{error}</p>
+            )}
+
+            <Button
+              variant='primary'
+              onClick={handleLogin}
+              
+              className='w-full mt-2 rounded-lg py-2'
+            >
+              Log In
+            </Button>
+          </>
+        )}
+      </div>
     </div>
   )
 }

@@ -2,8 +2,10 @@
 import Carousel from "react-bootstrap/Carousel"
 import Image from "next/image"
 import { Button } from "react-bootstrap"
+import { useRouter } from "next/navigation"
 
 function MovingSlides() {
+  const router = useRouter()
   return (
     <Carousel className='mt-19'>
       <Carousel.Item className='h-[500px] flex justify-center items-center relative'>
@@ -25,7 +27,9 @@ function MovingSlides() {
               in NBA history. Known for his size, strength, athleticism, and
               basketball IQ, he can dominate as a scorer, passer, and rebounder.
             </p>
-            <Button className='px-5 py-2 rounded-2xl bg-white text-black shadow-2xl'>
+            <Button 
+            onClick={() => router.push("/More")}
+            className='px-5 py-2 rounded-2xl bg-white text-black shadow-2xl'>
               More
             </Button>
           </div>
@@ -50,7 +54,9 @@ function MovingSlides() {
               of all time. Famous for his clutch performances, scoring ability,
               and six NBA championships with the Chicago Bulls.
             </p>
-            <Button className='px-5 py-2 rounded-2xl bg-white text-black shadow-2xl'>
+            <Button className='px-5 py-2 rounded-2xl bg-white text-black shadow-2xl'
+            onClick={() => router.push("/More")}
+            >
               More
             </Button>
           </div>
@@ -75,7 +81,9 @@ function MovingSlides() {
               nearly 40 years until LeBron passed him in 2023. His skyhook
               remains one of the most unstoppable moves in basketball history.
             </p>
-            <Button className='px-5 py-2 rounded-2xl bg-white text-black shadow-2xl'>
+            <Button 
+            onClick={() => router.push("/More")}
+            className='px-5 py-2 rounded-2xl bg-white text-black shadow-2xl'>
               More
             </Button>
           </div>
@@ -103,7 +111,9 @@ function MovingSlides() {
               built his legacy not on flash but on efficiency, defense, and
               teamwork — embodying steady excellence for nearly two decades.
             </p>
-            <Button className='px-5 py-2 rounded-2xl bg-white text-black shadow-2xl'>
+            <Button 
+            onClick={() => router.push("/More")}
+            className='px-5 py-2 rounded-2xl bg-white text-black shadow-2xl'>
               More
             </Button>
           </div>
@@ -132,7 +142,9 @@ function MovingSlides() {
               actor, and analyst — making him one of basketball’s most
               recognizable personalities.
             </p>
-            <Button className='px-5 py-2 rounded-2xl bg-white text-black shadow-2xl'>
+            <Button 
+            onClick={() => router.push("/More")}
+            className='px-5 py-2 rounded-2xl bg-white text-black shadow-2xl'>
               More
             </Button>
           </div>
@@ -142,4 +154,4 @@ function MovingSlides() {
   )
 }
 
-export default MovingSlides
+export default MovingSlides;

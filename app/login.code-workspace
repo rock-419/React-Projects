@@ -1,0 +1,14 @@
+{
+  "folders": [
+	{
+		"path": "../../login"
+	},
+	{
+		"path": "../../bootstrap"
+	},
+	{
+		"path": ".."
+	}
+],
+  "settings": {}
+}
