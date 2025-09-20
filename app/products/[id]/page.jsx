@@ -1,5 +1,6 @@
 "use client"
-import players from "@/app/data/page"
+
+import players from "../../data/page"
 import { useParams } from "next/navigation"
 import { Image } from "react-bootstrap"
 
