@@ -1,0 +1,110 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
+import Container from "react-bootstrap/Container"
+import Nav from "react-bootstrap/Nav"
+import Navbar from "react-bootstrap/Navbar"
+import NavDropdown from "react-bootstrap/NavDropdown"
+import "bootstrap/dist/css/bootstrap.min.css"
+
+function Header() {
+  const router = useRouter()
+  const [cartCount, setCartCount] = useState(0)
+
+  useEffect(() => {
+    const updateCart = (e) => {
+      const count = e?.detail ?? localStorage.getItem("cartCount")
+      setCartCount(count ? parseInt(count) : 0)
+    }
+
+    window.addEventListener("cartUpdated", updateCart)
+
+    const initialCount = localStorage.getItem("cartCount")
+    setCartCount(initialCount ? parseInt(initialCount) : 0)
+
+    return () => window.removeEventListener("cartUpdated", updateCart)
+  }, [])
+
+  return (
+    <Navbar expand='lg' className='bg-white px-6 py-2 border-b border-gray-200'>
+      <Container>
+        <Navbar.Brand href='/' className='text-black text-sm'>
+          Sports
+        </Navbar.Brand>
+
+        <Navbar.Toggle
+          aria-controls='basic-navbar-nav'
+          className='border-gray-300'
+        />
+        <Navbar.Collapse id='basic-navbar-nav'>
+          <Nav className='me-auto gap-4 ml-6 text-sm'>
+            <Nav.Link
+              href='/'
+              className='text-black hover:text-gray-700 transition'
+            >
+              Home
+            </Nav.Link>
+            <Nav.Link
+              className='text-black hover:text-gray-700 transition'
+              onClick={(e) => {
+                e.preventDefault()
+                const section = document.getElementById("players-section")
+                if (section) {
+                  section.scrollIntoView({ behavior: "smooth" })
+                }
+              }}
+            >
+              My Top 12
+            </Nav.Link>
+            <NavDropdown
+              title='Choose'
+              id='basic-nav-dropdown'
+              className='text-black hover:text-gray-700 transition'
+            >
+              <NavDropdown.Item href='/products/1'>
+                LeBRON RAYMONE JAMES SR.
+              </NavDropdown.Item>
+              <NavDropdown.Item href='/products/2'>
+                MICHEAL JEFFREY JORDAN
+              </NavDropdown.Item>
+              <NavDropdown.Item href='/products/3'>
+                KAREEM ABDUL-KABBAR
+              </NavDropdown.Item>
+              <NavDropdown.Item href='/products/4'>
+                TIMOTHY THEODORE DUNCAN
+              </NavDropdown.Item>
+              <NavDropdown.Item href='/products/5'>
+                SHAQUILLE RASHUAN O'NEAL
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+
+        <button
+          className='text-black text-sm'
+          onClick={() => router.push("/login")}
+        >
+          Log In
+        </button>
+
+        <div className='relative ml-2'>
+          <button
+            onClick={() => router.push("/purchasedItems")}
+            className='text-black text-sm border px-3 py-1 rounded'
+          >
+            Cart
+          </button>
+          {cartCount > 0 && (
+            <span className='absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full'>
+              {cartCount}
+            </span>
+          )}
+        </div>
+      </Container>
+    </Navbar>
+  )
+}
+
+export default Header
