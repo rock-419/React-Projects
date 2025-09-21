@@ -8,9 +8,9 @@ function LogIn() {
   const [error, setError] = useState("")
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
-  const [gender, setGender] = useState("male")
+  const [gender, setGender] = useState("")
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-
+  
   const router = useRouter()
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function LogIn() {
   }, [isLoggedIn, router])
 
   const handleLogin = () => {
-    if (email === "1234" && password === "1234") {
+    if (email === "stored" && password === "") {
       if (gender === "male") {
         setIsLoggedIn(true)
         setError("")
@@ -43,7 +43,7 @@ function LogIn() {
           </div>
         ) : (
           <>
-            <h2 className='text-center text-black'>Log In</h2>s
+            <h2 className='text-center text-black'>Log In</h2>
             <input
               className='w-full border border-gray-300 rounded-lg p-3 mb-4 focus:outline-none text-black focus:ring-2 focus:ring-blue-400'
               type='text'
@@ -92,7 +92,7 @@ function LogIn() {
               Log In
             </Button>
             <Button
-              variant='primary'
+              variant='secondary'
               className='w-full mt-2 rounded-lg py-2'
               onClick={() => router.push("/register")}
             >

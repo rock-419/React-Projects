@@ -46,6 +46,7 @@ function Header() {
               Home
             </Nav.Link>
             <Nav.Link
+              href='/'
               className='text-black hover:text-gray-700 transition'
               onClick={(e) => {
                 e.preventDefault()
@@ -56,6 +57,12 @@ function Header() {
               }}
             >
               My Top 12
+            </Nav.Link>
+            <Nav.Link
+            href="/about"
+            className='text-black hover:text-gray-700 transition'
+            >
+            About us
             </Nav.Link>
             <NavDropdown
               title='Choose'

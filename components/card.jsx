@@ -13,7 +13,6 @@ const PlayerCard = ({
   direction = "right",
 }) => {
   const router = useRouter()
-
   const [animate, setAnimate] = useState(false)
 
   useEffect(() => {
@@ -24,6 +23,10 @@ const PlayerCard = ({
     const currentCount = parseInt(localStorage.getItem("cartCount")) || 0
     const newCount = currentCount + 1
     localStorage.setItem("cartCount", newCount.toString())
+
+    let cart = JSON.parse(localStorage.getItem("cartItems")) || []
+    cart.push({ name, price: jerseyPrice, nickname })
+    localStorage.setItem("cartItems", JSON.stringify(cart))
 
     window.dispatchEvent(new CustomEvent("cartUpdated", { detail: newCount }))
   }
@@ -67,7 +70,7 @@ const PlayerCard = ({
         <div className='flex gap-2'>
           <button
             className='border text-black border-black rounded p-1.5'
-            onClick={handleMore} // ← uses useRouter
+            onClick={handleMore}
           >
             More
           </button>
