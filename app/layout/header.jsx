@@ -1,100 +1,42 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
-import Container from "react-bootstrap/Container"
-import Nav from "react-bootstrap/Nav"
-import Navbar from "react-bootstrap/Navbar"
-import NavDropdown from "react-bootstrap/NavDropdown"
-import "bootstrap/dist/css/bootstrap.min.css"
+import { useEffect, useState } from "react";
 
-function Header() {
-  const router = useRouter()
-  const [cartCount, setCartCount] = useState(0)
+export default function Header() {
+  const [isSticky, setIsSticky] = useState(false);
+
   useEffect(() => {
-    const updateCart = () => {
-      const count = localStorage.getItem("cartCount")
-      setCartCount(count ? parseInt(count) : 0)
-    }
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    window.addEventListener("storage", updateCart)
-    updateCart()
-
-    return () => window.removeEventListener("storage", updateCart)
-  }, [])
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <Navbar expand='lg' className='bg-white px-6 py-2 border-b border-gray-200'>
-      <Container>
-        <Navbar.Brand href='#home' className='text-black text-sm'>
-          Sports
-        </Navbar.Brand>
-
-        <Navbar.Toggle
-          aria-controls='basic-navbar-nav'
-          className='border-gray-300'
-        />
-
-        <Navbar.Collapse id='basic-navbar-nav'>
-          <Nav className='me-auto gap-4 ml-6 text-sm'>
-            <Nav.Link
-              href='#home'
-              className='text-black hover:text-gray-700 transition'
-            >
-              Home
-            </Nav.Link>
-            <Nav.Link
-              href='#about'
-              className='text-black hover:text-gray-700 transition'
-            >
-              My Top 16
-            </Nav.Link>
-            <NavDropdown
-              title='Choose'
-              id='basic-nav-dropdown'
-              className='text-black hover:text-gray-700 transition'
-            >
-              <NavDropdown.Item href='#action/3.1'>
-                LeBRON RAYMONE JAMES SR.
-              </NavDropdown.Item>
-              <NavDropdown.Item href='#action/3.2'>
-                MICHEAL JEFFREY JORDAN
-              </NavDropdown.Item>
-              <NavDropdown.Item href='#action/3.3'>
-                KAREEM ABDUL-KABBAR
-              </NavDropdown.Item>
-              <NavDropdown.Item href='#action/3.3'>
-                TIMOTHY THEODORE DUNCAN
-              </NavDropdown.Item>
-              <NavDropdown.Item href='#action/3.3'>
-                SHAQUILLE RASHUAN O'NEAL
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href='#action/3.4'>
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
+    <header
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isSticky ? "bg-gray-950 shadow-lg" : "bg-transparent"
+      }`}
+    >
+      <nav className="flex justify-center space-x-8 py-4">
         <button
-          className='text-black text-sm'
-          onClick={() => router.push("/login")}
+          onClick={() => scrollToSection("about")}
+          className="hover:text-gray-400"
         >
-          Log In
+          About
         </button>
-        <div className='relative ml-2'>
-          <button className='text-black text-sm border px-3 py-1 rounded'>
-            Cart
-          </button>
-          {cartCount > 0 && (
-            <span className='absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full'>
-              {cartCount}
-            </span>
-          )}
-        </div>
-      </Container>
-    </Navbar>
-  )
+        <button
+          onClick={() => scrollToSection("skills")}
+          className="hover:text-gray-400" 
+        >
+          Skills
+        </button>
+      </nav>
+    </header>
+  );
 }
-
-export default Header
