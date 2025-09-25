@@ -1,5 +1,5 @@
 "use client";
-
+import "../globals.css";
 import { useEffect, useState } from "react";
 
 export default function Header() {
@@ -7,7 +7,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsSticky(window.scrollY > 50);
+      setIsSticky(window.scrollY > 40);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -19,22 +19,28 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isSticky ? "bg-gray-950 shadow-lg" : "bg-transparent"
+      className={`fixed top-0 w-full z-50 transition-all duration-400 ${
+        isSticky ? "bg-emerald-950 shadow-2xl" : "bg-transparent"
       }`}
     >
-      <nav className="flex justify-center space-x-8 py-4">
+      <nav className="flex justify-center gap-5 py-4">
         <button
           onClick={() => scrollToSection("about")}
-          className="hover:text-gray-400"
+          className="text-white text-lg font-bold transition-all duration-300 hover:text-white hover:text-shadow-[0_0_16px_rgba(0,255,150,0.5),0_0_32px_rgba(0,255,120,0.3)]"
         >
           About
         </button>
         <button
           onClick={() => scrollToSection("skills")}
-          className="hover:text-gray-400" 
+          className="text-white text-lg font-bold transition-all duration-300 hover:text-white hover:text-shadow-[0_0_16px_rgba(0,255,150,0.5),0_0_32px_rgba(0,255,120,0.3)]"
         >
           Skills
+        </button>
+        <button
+          onClick={() => scrollToSection("contact")}
+          className="text-white text-lg font-bold transition-all duration-300 hover:text-white hover:text-shadow-[0_0_16px_rgba(0,255,150,0.5),0_0_32px_rgba(0,255,120,0.3)]"
+        >
+          Contact
         </button>
       </nav>
     </header>

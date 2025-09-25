@@ -11,8 +11,8 @@ export default function Skills() {
       transition={{ duration: 0.8 }}
     >
       <div className="max-w-2xl text-center">
-        <h1 className="text-4xl font-bold mb-4">Skills</h1>
-        <ul className="space-y-2 text-gray-400">
+        <h1 className="text-white font-bold mb-4 ">Skills</h1>
+        <ul className="space-y-2 text-gray-200">
           <li>- Coding</li>
           <p>
             First started with python when I was in 9th grade. Solved over 300
