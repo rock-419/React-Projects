@@ -2,8 +2,8 @@
 
 export default function Footer() {
   return (
-    <p className="text-gray-300 bg-black p-3 flex justify-center text-sm mt-10">
-      © 2025 Chuluudai.
-    </p>
+    <footer className="bg-black text-gray-300">
+      <p className="text-center text-sm py-3 px-4 sm:px-0">© 2025 Chuluudai.</p>
+    </footer>
   );
 }

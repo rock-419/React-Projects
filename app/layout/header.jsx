@@ -6,9 +6,7 @@ export default function Header() {
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 40);
-    };
+    const handleScroll = () => setIsSticky(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -23,22 +21,22 @@ export default function Header() {
         isSticky ? "bg-emerald-950 shadow-2xl" : "bg-transparent"
       }`}
     >
-      <nav className="flex justify-center gap-5 py-4">
+      <nav className="flex flex-col sm:flex-row justify-center sm:justify-center gap-3 sm:gap-5 py-4 px-4 sm:px-0">
         <button
           onClick={() => scrollToSection("about")}
-          className="text-white text-lg font-bold transition-all duration-300 hover:text-white hover:text-shadow-[0_0_16px_rgba(0,255,150,0.5),0_0_32px_rgba(0,255,120,0.3)]"
+          className="text-white text-base sm:text-lg font-bold transition-all duration-300 hover:text-shadow-[0_0_16px_rgba(0,255,150,0.5),0_0_32px_rgba(0,255,120,0.3)]"
         >
           About
         </button>
         <button
           onClick={() => scrollToSection("skills")}
-          className="text-white text-lg font-bold transition-all duration-300 hover:text-white hover:text-shadow-[0_0_16px_rgba(0,255,150,0.5),0_0_32px_rgba(0,255,120,0.3)]"
+          className="text-white text-base sm:text-lg font-bold transition-all duration-300 hover:text-shadow-[0_0_16px_rgba(0,255,150,0.5),0_0_32px_rgba(0,255,120,0.3)]"
         >
           Skills
         </button>
         <button
           onClick={() => scrollToSection("contact")}
-          className="text-white text-lg font-bold transition-all duration-300 hover:text-white hover:text-shadow-[0_0_16px_rgba(0,255,150,0.5),0_0_32px_rgba(0,255,120,0.3)]"
+          className="text-white text-base sm:text-lg font-bold transition-all duration-300 hover:text-shadow-[0_0_16px_rgba(0,255,150,0.5),0_0_32px_rgba(0,255,120,0.3)]"
         >
           Contact
         </button>
