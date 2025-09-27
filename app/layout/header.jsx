@@ -35,6 +35,12 @@ export default function Header() {
           Skills
         </button>
         <button
+          onClick={() => scrollToSection("hobbies")}
+          className="text-white text-base sm:text-lg font-bold transition-all duration-300 hover:text-shadow-[0_0_16px_rgba(0,255,150,0.5),0_0_32px_rgba(0,255,120,0.3)]"
+        >
+          Hobbies
+        </button>
+        <button
           onClick={() => scrollToSection("contact")}
           className="text-white text-base sm:text-lg font-bold transition-all duration-300 hover:text-shadow-[0_0_16px_rgba(0,255,150,0.5),0_0_32px_rgba(0,255,120,0.3)]"
         >
