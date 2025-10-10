@@ -28,7 +28,9 @@ export default function Skills() {
             <h2 className="font-semibold text-lg sm:text-xl">Volleyball</h2>
             <ul>
               <li>4 Years of experience</li>
-              <li>Maintained the starter position throughout all of highschool</li>
+              <li>
+                Maintained the starter position throughout all of highschool
+              </li>
               <li>4 time top 8 in district championships</li>
               <li>3rd place in Empathy cup</li>
             </ul>
