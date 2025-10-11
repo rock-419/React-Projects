@@ -18,30 +18,26 @@ export default function Skills() {
           <li>
             <h2 className="font-semibold text-lg sm:text-xl">Coding</h2>
             <ul>
+              <li>3 Years of experience</li>
               <li>Python</li>
               <li>JS</li>
               <li>Pseudocode</li>
               <li>Next JS</li>
+              <li>Over 500 solved problems on Spoj.com</li>
             </ul>
           </li>
           <li>
             <h2 className="font-semibold text-lg sm:text-xl">Volleyball</h2>
             <ul>
               <li>4 Years of experience</li>
+              <li>Played club volleyball for a year</li>
               <li>
                 Maintained the starter position throughout all of highschool
               </li>
-              <li>4 time top 8 in district championships</li>
-              <li>3rd place in Empathy cup</li>
-            </ul>
-          </li>
-          <li>
-            <h2 className="font-semibold text-lg sm:text-xl">Charisma</h2>
-            <ul>
-              <li>Openly towards anyone</li>
-              <li></li>
-              <li></li>
-              <li></li>
+              <li>4 time top 5 in district championships</li>
+              <li>1st and 3rd place in Empathy cup</li>
+              <li>One time district championship leading scorer</li>
+              <li>One time district champion</li>
             </ul>
           </li>
         </ul>
