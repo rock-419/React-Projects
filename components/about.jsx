@@ -21,7 +21,7 @@ export default function About() {
           />
         </div>
         <h1 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-          Chuluudai Lkhagva-Ochir
+          CHULUUDAI LKHAGVA-OCHIR
         </h1>
         <p className="text-gray-200 text-sm sm:text-base md:text-lg leading-relaxed rounded-2xl p-4 hover:bg-emerald-950 transition-colors duration-200">
           Hello, I’m Chuluudai, a senior at UEIS. I have played varsity

@@ -4,6 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Header from "./layout/header"
 import Footer from "./layout/footer"
 
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;600;700&family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap"
+  rel="stylesheet"
+/>;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
