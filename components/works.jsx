@@ -4,12 +4,9 @@ export default function Works() {
   const projects = [
     {
       title: "Law Firm",
-      link: "be-ge1w8us9k-chuluudailkh-2102s-projects.vercel.app",
+      link: "https://be-indol.vercel.app/",
     },
-    {
-      title: "Portfolio",
-      link: "https://react-projects-zywm.vercel.app/",
-    },
+
     {
       title: "Ecommerce",
       link: "https://react-projects-one-xi.vercel.app/",
