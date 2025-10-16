@@ -3,6 +3,10 @@
 export default function Works() {
   const projects = [
     {
+      title: "Law Firm",
+      link: "be-ge1w8us9k-chuluudailkh-2102s-projects.vercel.app",
+    },
+    {
       title: "Portfolio",
       link: "https://react-projects-zywm.vercel.app/",
     },
@@ -27,7 +31,8 @@ export default function Works() {
           My Works
         </h1>
         <p className="text-gray-400 text-lg">
-          A collection of my latest web projects -- built using Next js , React, Tailwind css.
+          A collection of my latest web projects -- built using Next js , React,
+          Tailwind css.
         </p>
       </div>
 
